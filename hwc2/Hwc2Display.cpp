@@ -54,7 +54,7 @@ Hwc2Display::Hwc2Display(std::shared_ptr<Hwc2DisplayObserver> observer, uint32_t
     memset(&mHdrCaps, 0, sizeof(mHdrCaps));
     memset(mColorMatrix, 0, sizeof(float) * 16);
     memset(&mCalibrateCoordinates, 0, sizeof(int) * 4);
-#if PLATFORM_SDK_VERSION == 30
+#if 0 // PLATFORM_SDK_VERSION == 30
     // for self-adaptive
     mVideoLayerRegion = 0;
 #endif
@@ -953,7 +953,7 @@ hwc2_error_t Hwc2Display::validateDisplay(uint32_t* outNumTypes,
 hwc2_error_t Hwc2Display::collectCompositionRequest(
     uint32_t* outNumTypes, uint32_t* outNumRequests) {
     Hwc2Layer *layer;
-#if PLATFORM_SDK_VERSION == 30
+#if 0 // PLATFORM_SDK_VERSION == 30
     // for self-adaptive
     int maxRegion = 0, region = 0;
     ISystemControl::Rect maxRect{0, 0, 0, 0};
@@ -977,7 +977,7 @@ hwc2_error_t Hwc2Display::collectCompositionRequest(
         if (expectedHwcComposition == HWC2_COMPOSITION_SIDEBAND || layer->mCompositionType == MESON_COMPOSITION_PLANE_AMVIDEO)
             mProcessorFlags |= PRESENT_SIDEBAND;
 
-#if PLATFORM_SDK_VERSION == 30
+#if 0 // PLATFORM_SDK_VERSION == 30
         // for self-adaptive
         if (isVideoPlaneComposition(layer->mCompositionType)) {
             /* For hdmi self-adaptive in systemcontrol.
@@ -996,7 +996,7 @@ hwc2_error_t Hwc2Display::collectCompositionRequest(
 #endif
     }
 
-#if PLATFORM_SDK_VERSION == 30
+#if 0 // PLATFORM_SDK_VERSION == 30
     // for self-adaptive
     if (maxRegion != 0 && mVideoLayerRegion != maxRegion) {
         sc_frame_rate_display(true, maxRect);
