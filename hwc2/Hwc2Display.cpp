@@ -1521,14 +1521,15 @@ hwc2_error_t Hwc2Display::setContentType(uint32_t contentType) {
 }
 
 bool Hwc2Display::hasVideoLayerPresent() {
-    int videoLayers = 0;
+    return true;
+/*    int videoLayers = 0;
     for (auto it = mPresentLayers.begin(); it != mPresentLayers.end(); it++) {
         drm_fb_type_t type = (*it)->mFbType;
         if (type == DRM_FB_VIDEO_UVM_DMA || type == DRM_FB_VIDEO_OVERLAY)
             videoLayers++;
     }
 
-    return (videoLayers > 0);
+    return (videoLayers > 0);*/
 }
 
 // when there is nontunnel video playback, change vsync to MixMode
